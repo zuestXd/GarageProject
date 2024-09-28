@@ -1,0 +1,11 @@
+@CarPartsFinder_HostAddress = http://localhost:5000
+
+# Get all garages
+GET {{CarPartsFinder_HostAddress}}/api/garages
+Accept: application/json
+
+###
+
+# Get a specific garage by ID
+GET {{CarPartsFinder_HostAddress}}/api/garages/1
+Accept: application/json

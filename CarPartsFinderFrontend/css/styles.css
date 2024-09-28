@@ -1,0 +1,148 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header styling */
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.75rem;
+    margin-bottom: 20px;
+}
+
+/* Container for main content */
+.container {
+    padding: 20px;
+}
+
+/* Toggle button styling */
+.toggle-buttons {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.toggle-buttons button {
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    margin: 0 10px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.toggle-buttons button.active {
+    border-color: #007bff;
+}
+
+/* Fieldset styling */
+fieldset {
+    width: 300px;
+    border: 2px solid #007bff;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Ensures both fieldsets have a consistent height */
+    min-height: 450px;
+}
+
+legend {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Input field styling */
+label {
+    margin-top: 10px;
+}
+
+select, input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+textarea {
+    resize: none;
+}
+
+/* Search results styling */
+.results {
+    margin-top: 30px;
+}
+
+.results div {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+}
+
+fieldset:disabled {
+    opacity: 0.5;
+}
+
+/* Aligning both fieldsets horizontally and ensuring they stretch equally */
+.d-flex {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 50px;
+    height: 100%;
+}
+
+/* Ensuring both fieldsets stretch to the same height */
+fieldset {
+    flex-grow: 1;
+}
+
+/* Custom border size and consistent spacing */
+fieldset, select, input[type="text"], textarea {
+    box-sizing: border-box;
+}
+
+/* Condition radio buttons spanning horizontally */
+.radio-group {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.radio-group label {
+    margin: 0;
+}
+
+/* Additional alignment for uniform spacing */
+fieldset > label, fieldset > select, fieldset > input, fieldset > textarea {
+    margin-bottom: 15px;
+}
+
+/* Ensuring both fieldsets have equal height */
+fieldset {
+    min-height: 450px; /* Adjust this as per your need */
+    height: auto;
+}

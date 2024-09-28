@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate Phone Number</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box; overflow: hidden;">
+
+    <header style="background-color: #333; color: white; padding: 1rem; text-align: center;">
+        <h1>Car Parts Finder</h1>
+    </header>
+
+    <main style="position: relative;">
+        <!-- Modal -->
+        <div class="modal fade show" id="phoneModal" tabindex="-1" style="display: block; backdrop-filter: blur(10px);">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="max-width: 500px; margin: 0 auto;">
+                    <div class="modal-header" style="text-align: center;">
+                        <h5 class="modal-title">Safety First!</h5>
+                    </div>
+                    <div class="modal-body" style="text-align: center; padding: 20px;">
+                        <p>To keep everyone safe and happy on thepartfinder.qa, only verified users can connect with sellers. Add your valid WhatsApp/Mobile Number, where you can get price quotes from verified sellers.</p>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="width: 60px; background: transparent; border: none;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Qatar.svg" alt="Qatar Flag" style="width: 100%; height: auto;">
+                            </span>
+                            <input id="MobileNumber" type="text" class="form-control" placeholder="Enter your mobile number" aria-label="Mobile Number" style="width: calc(100% - 60px); padding-left: 60px;" value="+974">
+                        </div>
+                        <button class="btn btn-success" id="goToListingsBtn">Go to the Listings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="card-container" style="display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px; margin-top: 20px;">
+            <div class="card" style="width: 80%; max-width: 1200px; height: 150px; display: flex; align-items: center; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff; position: relative; overflow: hidden;">
+                <!-- Image section (1/4 of the card) -->
+                <img src="https://via.placeholder.com/200x150" alt="Garage Image" style="width: 25%; height: 100%; object-fit: cover; border-radius: 8px;">
+
+                <!-- Center content section (2/4 of the card) -->
+                <div class="card-body" style="width: 50%; text-align: center; padding-left: 20px;">
+                    <h5 class="card-title" style="margin: 0; font-size: 18px;">Garage Name</h5>
+                    <p style="margin: 5px 0; font-size: 14px;"><strong>Brands:</strong> Brand A, Brand B</p>
+                    <p style="margin: 5px 0; font-size: 14px;"><strong>Parts Type:</strong> New, Used</p>
+                </div>
+
+                <!-- Right section (1/4 of the card) -->
+                <div class="card-actions" style="width: 25%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="margin-bottom: 10px; font-size: 14px;"><strong>Location:</strong> Location Details</p>
+                    <button class="btn btn-primary" style="margin-bottom: 5px; font-size: 14px;"><i class="fab fa-whatsapp"></i> Send WhatsApp</button>
+                    <button class="btn btn-secondary" style="font-size: 14px;"><i class="fas fa-phone"></i> Call</button>
+                </div>
+            </div>
+            <!-- You can repeat the above .card structure for multiple listings -->
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        document.getElementById('goToListingsBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            const qatarNumber = document.getElementById("MobileNumber").value;
+            
+            fetch("https://localhost:5001/api/QatarNumber", {
+                method: "POST",
+                mode: "no-cors", 
+                headers: {
+                    "Content-Type": "application/json"
+                },
+               body: JSON.stringify({ qatarNumber })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();  // Use text() for flexibility, JSON can still be parsed if valid
+            })
+            .then(data => {
+                try {
+                    const jsonData = JSON.parse(data);  // Parse JSON manually
+                    document.getElementById("result").innerText = jsonData.message;
+                } catch (e) {
+                    document.getElementById("result").innerText = "Invalid response format";
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+
+</body>
+</html>
