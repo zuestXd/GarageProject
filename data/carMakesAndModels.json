@@ -12,6 +12,11 @@
         "make": "Honda",
         "models": ["Civic", "Accord", "CR-V"]
       }
+      ,
+      {
+        "make": "Chevy",
+        "models": ["colorado", "aveo", "sonic"]
+      }
     ]
   }
   
