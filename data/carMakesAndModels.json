@@ -16,6 +16,10 @@
       {
         "make": "Chevy",
         "models": ["colorado", "aveo", "sonic"]
+      },
+      {
+        "make": "Chevy",
+        "models": ["colorado", "aveo", "sonic"]
       }
     ]
   }
