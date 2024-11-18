@@ -12,7 +12,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://127.0.0.1:5500", "http://localhost:5000", "https://localhost:5001") // Allow both HTTP and HTTPS
+            policy.WithOrigins("http://127.0.0.1:5500", "http://localhost:5000", "https://localhost:5001","https://localhost:5002") // Allow both HTTP and HTTPS
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
